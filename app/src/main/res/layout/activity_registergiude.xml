@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".registergiude"
+    android:background="@drawable/backappx"
+    >
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+  <EditText
+      android:id="@+id/editTextfullname"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="32dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/round_border"
+      android:backgroundTint="@color/white"
+      android:drawableStart="@drawable/ic_baseline_person_24"
+      android:drawablePadding="16dp"
+      android:ems="10"
+      android:hint="full name"
+      android:inputType="text"
+      android:padding="16dp"
+      android:textColor="@color/black"
+      android:textColorHint="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/editgiudeName" />
+
+  <EditText
+      android:id="@+id/editgiudeName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/round_border"
+      android:backgroundTint="@color/white"
+      android:drawableStart="@drawable/ic_baseline_person_24"
+      android:drawablePadding="16dp"
+      android:ems="10"
+      android:hint="name"
+      android:inputType="text"
+      android:padding="16dp"
+      android:textColor="@color/black"
+      android:textColorHint="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/welcomegg" />
+
+  <EditText
+      android:id="@+id/editTextgphone"
+      android:layout_width="0dp"
+      android:layout_height="58dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="40dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/round_border"
+      android:backgroundTint="@color/white"
+      android:backgroundTintMode="src_over"
+      android:drawableStart="@drawable/ic_baseline_local_phone_24"
+      android:drawablePadding="16dp"
+      android:ems="10"
+      android:hint="phone number"
+      android:inputType="number|text|phone"
+      android:padding="16dp"
+      android:textColorHint="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.573"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/editTextgiPwdConfirme" />
+
+  <EditText
+      android:id="@+id/editTextgicity"
+      android:layout_width="0dp"
+      android:layout_height="58dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="52dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/round_border"
+      android:backgroundTint="@color/white"
+      android:backgroundTintMode="src_over"
+      android:drawableStart="@drawable/ic_baseline_location_city_24"
+      android:drawablePadding="16dp"
+      android:ems="10"
+      android:hint="city"
+      android:inputType="text"
+      android:padding="16dp"
+      android:textColorHint="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/editTextgphone" />
+
+  <EditText
+      android:id="@+id/editTextgiPwdConfirme"
+      android:layout_width="0dp"
+      android:layout_height="58dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="40dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/round_border"
+      android:backgroundTint="@color/white"
+      android:backgroundTintMode="src_over"
+      android:drawableStart="@drawable/ic_baseline_lock_24"
+      android:drawablePadding="16dp"
+      android:ems="10"
+      android:hint="password confirmation"
+      android:inputType="textPassword"
+      android:padding="16dp"
+      android:textColorHint="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/editTextgiudePassword" />
+
+  <ImageView
+      android:id="@+id/imageView4"
+      android:layout_width="172dp"
+      android:layout_height="129dp"
+      android:layout_marginTop="24dp"
+      app:layout_constraintEnd_toStartOf="@+id/imageView8"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/logocercel" />
+
+  <ImageView
+      android:id="@+id/imageView8"
+      android:layout_width="123dp"
+      android:layout_height="116dp"
+      android:layout_marginTop="24dp"
+      android:layout_marginEnd="36dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_baseline_perm_identity_24" />
+
+  <TextView
+      android:id="@+id/welcomegg"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Tourist Guide register"
+      android:textColor="@color/white"
+      android:textSize="34sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+  <EditText
+      android:id="@+id/editTextemail"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="44dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/round_border"
+      android:backgroundTint="@color/white"
+      android:drawableStart="@drawable/ic_baseline_email_24"
+      android:drawablePadding="16dp"
+      android:ems="10"
+      android:hint="EMAIL"
+      android:inputType="text"
+      android:padding="16dp"
+      android:textColor="@color/black"
+      android:textColorHint="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/editTextfullname" />
+
+  <EditText
+      android:id="@+id/editTextgiudePassword"
+      android:layout_width="0dp"
+      android:layout_height="55dp"
+      android:layout_marginTop="24dp"
+      android:background="@drawable/round_border"
+      android:backgroundTint="@color/white"
+      android:backgroundTintMode="src_over"
+      android:drawableStart="@drawable/ic_baseline_lock_24"
+      android:drawablePadding="16dp"
+      android:ems="10"
+      android:hint="password"
+      android:inputType="textPassword"
+      android:padding="16dp"
+      android:textColorHint="@color/black"
+      app:layout_constraintEnd_toEndOf="@+id/editTextemail"
+      app:layout_constraintStart_toStartOf="@+id/editTextemail"
+      app:layout_constraintTop_toBottomOf="@+id/editTextemail" />
+
+  <Button
+      android:id="@+id/btnregistergiude"
+      android:layout_width="341dp"
+      android:layout_height="62dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="184dp"
+      android:layout_marginEnd="32dp"
+      android:backgroundTint="@color/sky_blue"
+      android:text="register"
+      android:textSize="20sp"
+      android:textStyle="bold|italic"
+      app:cornerRadius="100dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/editTextgphone" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

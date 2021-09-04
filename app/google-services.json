@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "140065431027",
+    "project_id": "atourguide-580e1",
+    "storage_bucket": "atourguide-580e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140065431027:android:788441328e93bba21c4686",
+        "android_client_info": {
+          "package_name": "com.monta.atourguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140065431027-9kkc4qltaeumnglhtf8g9vgscttffge4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBtyeZ7lmSJMeHdBh7jFD6JwEy0BAeAAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140065431027-9kkc4qltaeumnglhtf8g9vgscttffge4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

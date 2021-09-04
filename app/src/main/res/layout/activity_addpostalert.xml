@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backappx">
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="Add a tourist place in your area"
+            android:textColor="@color/white"
+            android:textSize="29sp"
+
+
+            android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/titleId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/card_bg"
+        android:ems="10"
+        android:hint="title"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/descId"
+        android:layout_width="wrap_content"
+        android:layout_height="199dp"
+        android:layout_below="@+id/titleId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/card_bg"
+        android:ems="10"
+        android:hint="@string/descguide"
+        android:inputType="text|textMultiLine"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+
+    <ImageView
+        android:id="@+id/insert_imgId"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_below="@+id/descId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/avatargratuit" />
+
+    <Button
+
+        android:id="@+id/btn_post"
+        android:layout_width="143dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/insert_imgId"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+
+
+        android:backgroundTint="@color/sky_blue"
+        android:text="post"
+        android:textSize="30sp"
+        app:cornerRadius="30dp" />
+
+    <Button
+
+        android:id="@+id/btn_cancel"
+        android:layout_width="143dp"
+        android:layout_height="75dp"
+
+        android:layout_below="@+id/insert_imgId"
+        android:layout_alignParentEnd="true"
+
+
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/sky_blue"
+        android:text="cancel"
+        android:layout_marginTop="30dp"
+        android:textSize="25sp"
+        app:cornerRadius="30dp" />
+
+
+    </RelativeLayout>
