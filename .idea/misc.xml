@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/drawable/card_bg.xml" value="0.19572368421052633" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.18472222222222223" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/drawable/rounded_circle.xml" value="0.18958333333333333" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout-w1240dp/activity_login_tourist.xml" value="0.234765625" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout-w936dp/activity_login_tourist.xml" value="0.2203125" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/activity_addpostalert.xml" value="0.2" />
@@ -21,17 +22,24 @@
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/addpost.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/app_bar_homepage.xml" value="0.1930921052631579" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/content_homepage.xml" value="0.1527777777777778" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_chat.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_home.xml" value="0.18552631578947368" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_messages.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_post.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_profile.xml" value="0.15" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_profilet.xml" value="0.1527777777777778" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_tourist_chat.xml" value="0.18552631578947368" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/fragment_user.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/item_guides.xml" value="0.18552631578947368" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/item_messages.xml" value="0.15763888888888888" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/item_profileg.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/log_dialt.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/nav_header_homepage.xml" value="0.18552631578947368" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/layout/user_item.xml" value="0.17636022514071295" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/menu/aaaaaaaaaaaaaaaaaaaaaaaaa.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/menu/activity_main_drawer.xml" value="0.18371335504885994" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/menu/barhometourist.xml" value="0.17916666666666667" />
+        <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/menu/bottom_nav_menu_t.xml" value="0.15763888888888888" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/menu/homepage.xml" value="0.17916666666666667" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/menu/porifile_details_rofile.xml" value="0.18552631578947368" />
         <entry key="..\:/cour/online cours/android studio/app/app_moblie_guide/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19572368421052633" />

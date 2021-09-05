@@ -3,6 +3,8 @@ package com.monta.atourguide.Adapters;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.monta.atourguide.Models.Guide;
 import com.monta.atourguide.R;
 import com.monta.atourguide.detaiilsporofileG;
@@ -21,6 +27,8 @@ import com.monta.atourguide.ui.home.HomeFragment;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class GuideAdapter extends RecyclerView.Adapter<GuideViewHolder> {
@@ -28,12 +36,14 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideViewHolder> {
     Context mContext;
     List<Guide>GuideListe;
     HomeFragment homeFragment;
+    private StorageReference mstorageRef ;
 
 
 
     public GuideAdapter(Context mContext,List<Guide> guideListe) {
         GuideListe = guideListe;
         this.mContext = mContext;
+        mstorageRef = FirebaseStorage.getInstance().getReference();
     }
 
     @NonNull
@@ -52,7 +62,27 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideViewHolder> {
         holder.desc_gd.setText(guide.getDescription());
         holder.gd_price.setText(guide.getPrice().toString());
         holder.gd_city.setText(guide.getCity());
-        holder.imageduide.setImageResource(guide.getImgGd());
+
+
+        /*File localfile = null;
+        try {
+            localfile = File.createTempFile("images", "jpg");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        final File finallocalfile = localfile;
+        StorageReference reversRef = mstorageRef.child(guide.getImgGd());
+        reversRef.getFile(finallocalfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                Bitmap bitmap = BitmapFactory.decodeFile(finallocalfile.getAbsolutePath());
+                holder.imageduide.setImageBitmap(bitmap);
+            }
+        });*/
+
+
+
         holder.fullname.setText(guide.getFullname());
 
 

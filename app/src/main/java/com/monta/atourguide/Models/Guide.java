@@ -3,7 +3,8 @@ package com.monta.atourguide.Models;
 public class Guide {
     private String name, fullname, email, city, description,descriptionDetails, date, sex;
 
-    private Integer age,number,imgGd;
+    private Integer age,number;
+    private String imgGd;
     private Float price;
 
     public Guide() {
@@ -17,7 +18,7 @@ public class Guide {
         this.number = number;
     }
 
-    public Guide(String name, String fullname, String email, String city, String description, String descriptionDetails, String date, String sex, Integer age, Integer number, Integer imgGd, Float price) {
+    public Guide(String name, String fullname, String email, String city, String description, String descriptionDetails, String date, String sex, Integer age, Integer number, Float price) {
         this.name = name;
         this.fullname = fullname;
         this.email = email;
@@ -29,7 +30,7 @@ public class Guide {
         this.sex = sex;
         this.age = age;
         this.number = number;
-        this.imgGd = imgGd;
+
         this.price = price;
     }
 
@@ -114,11 +115,11 @@ public class Guide {
         this.number = number;
     }
 
-    public Integer getImgGd() {
+    public String getImgGd() {
         return imgGd;
     }
 
-    public void setImgGd(Integer imgGd) {
+    public void setImgGd(String imgGd) {
         this.imgGd = imgGd;
     }
 

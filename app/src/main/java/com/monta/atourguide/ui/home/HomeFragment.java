@@ -53,10 +53,10 @@ public class HomeFragment extends Fragment {
         recyclerViewGuide.setHasFixedSize(true);
 
         GuideListe = new ArrayList<>();
-        for (int i = 0; i < 11; i++) {
-            GuideListe.add(new Guide("amira","mansouri","amiramansouri@gmail.com","tunise","Il peut être modifié par les constructeurs qui y ajoutent leurs surcouches, apportant ainsi des fonctionnalités supplémentaires mais au détriment du délai d'obtention des nouvelles mises à jour qui est parfois important","Il peut être modifié par les constructeurs qui y ajoutent leurs surcouches, apportant ainsi des fonctionnalités supplémentaires mais au détriment du délai d'obtention des nouvelles mises à jour qui est parfois importantrgl bgrehbhjb kvheb vheb vkguvybhveblvihbveh re vrkhvh rb evr ek'ihfvvvvvhf'","10:45","femme",55,55458961, R.drawable.profileuser,20f));
+        for (int i = 0; i < 20; i++) {
 
-            GuideListe.add(new Guide("montassar","themri","montassarthemri@gmail.com","bazina","Il peut être modifié par les constructeurs qui y ajoutent leurs surcouches, apportant ainsi des fonctionnalités supplémentaires mais au détriment du délai d'obtention des nouvelles mises à jour qui est parfois important","Il peut être modifié par les constructeurs qui y ajoutent leurs surcouches, apportant ainsi des fonctionnalités supplémentaires mais au détriment du délai d'obtention des nouvelles mises à jour qui est parfois important rheubvbrvb rebvbehbvkjbevbkjk ebkbvrbjebvjrbvevjbvjebjbhkvrbhjevbejbvebhk","10:33","homme",15,55428961,R.drawable.userphoto,15f));
+
+            GuideListe.add(new Guide("montassar","themri","montassarthemri@gmail.com","bazina","Il peut être modifié par les constructeurs qui y ajoutent leurs surcouches, apportant ainsi des fonctionnalités supplémentaires mais au détriment du délai d'obtention des nouvelles mises à jour qui est parfois important","Il peut être modifié par les constructeurs qui y ajoutent leurs surcouches, apportant ainsi des fonctionnalités supplémentaires mais au détriment du délai d'obtention des nouvelles mises à jour qui est parfois important rheubvbrvb rebvbehbvkjbevbkjk ebkbvrbjebvjrbvevjbvjebjbhkvrbhjevbejbvebhk","10:33","homme",15,55428961,15f));
         }
 
         guideAdapter =new GuideAdapter(getContext(),GuideListe);
