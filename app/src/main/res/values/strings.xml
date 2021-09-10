@@ -20,7 +20,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_profile">profile</string>
-    <string name="menu_messages">messages</string>
+    <string name="menu_messages">messageschats</string>
     <string name="menu_contact">contact</string>
     <string name="menu_Settings">Settings</string>
 

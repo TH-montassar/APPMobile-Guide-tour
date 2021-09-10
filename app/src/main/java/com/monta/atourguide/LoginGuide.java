@@ -168,7 +168,7 @@ public class LoginGuide extends AppCompatActivity {
 
                                               //  Toast.makeText(LoginGuide.this, "name:"+ guide.getCity(), Toast.LENGTH_SHORT).show();
 
-                                                FirebaseFirestore database = FirebaseFirestore.getInstance();
+                                                /*FirebaseFirestore database = FirebaseFirestore.getInstance();
                                                 HashMap<String, Object> data = new HashMap<>();
                                                 data.put("prenom",guide.getName());
                                                 data.put("nom", guide.getFullname());
@@ -177,7 +177,7 @@ public class LoginGuide extends AppCompatActivity {
 
                                                 }).addOnFailureListener(exception -> {
                                                     Toast.makeText(LoginGuide.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-                                                });
+                                                });*/
 
                                             }
 

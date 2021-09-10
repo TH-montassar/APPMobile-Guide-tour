@@ -120,13 +120,15 @@ public class registergiude extends AppCompatActivity {
 
                                     userGuide.getPhoneNumber();
                                     userGuide.getPhotoUrl();*/
-                                    Guide guide=new Guide(name,fullname,email,city,Integer.parseInt(phone));
+                                    String userid= userGuide.getUid();
+                                    Guide guide=new Guide(userid,name,fullname,email,city,Integer.parseInt(phone));
+
 
 
 
                                     // Write a message to the database
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference myRef = database.getReference("guide").child(userGuide.getUid());
+                                    DatabaseReference myRef = database.getReference("guide").child(userid);
                                     myRef.setValue(guide).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {

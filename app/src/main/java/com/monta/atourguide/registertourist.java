@@ -98,9 +98,10 @@ public class registertourist extends AppCompatActivity {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser userTourist = mAuth.getCurrentUser();
-                                        Tourist tourist =new Tourist(name_fullname,email,phoneNumber);
+                                        String idtourist=userTourist.getUid();
+                                        Tourist tourist =new Tourist(name_fullname,email,phoneNumber,idtourist);
                                         FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                        DatabaseReference myRef = database.getReference("tourist").child(userTourist.getUid());
+                                        DatabaseReference myRef = database.getReference("tourist").child(idtourist);
                                         myRef.setValue( tourist).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

@@ -1,5 +1,7 @@
 package com.monta.atourguide.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -11,12 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.core.Context;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.monta.atourguide.MessageActivityChat;
 import com.monta.atourguide.Models.Guide;
-import com.monta.atourguide.Models.Post;
 import com.monta.atourguide.R;
 
 import java.io.File;
@@ -28,22 +29,22 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class GuideAdapterChat extends RecyclerView.Adapter<GuideAdapterChat.ViewHolder> {
     private Context mcontext;
     private List<Guide> mguide;
-    private StorageReference mstorageRef ;
+    private StorageReference mstorageRef;
 
-    public GuideAdapterChat(Context mcontext, List<Guide> mguide /*,List<Tourist> mtourist*/) {
+    public GuideAdapterChat(Context mcontext, List<Guide> mguide) {
         this.mcontext = mcontext;
         this.mguide = mguide;
         mstorageRef = FirebaseStorage.getInstance().getReference();
-
-
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mUserName;
         private CircleImageView mprofileimg;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mUserName =itemView.findViewById(R.id.usernamee);
-            mprofileimg =itemView.findViewById(R.id.profil_img);
+            mUserName = itemView.findViewById(R.id.usernamee);
+            mprofileimg = itemView.findViewById(R.id.profil_img);
         }
     }
 
@@ -59,9 +60,9 @@ public class GuideAdapterChat extends RecyclerView.Adapter<GuideAdapterChat.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Guide guide = mguide.get(position);
-        holder.mUserName.setText(guide.getName()+" "+guide.getFullname());
+        holder.mUserName.setText(guide.getName() + " " + guide.getFullname());
 
-        File localfile = null;
+       /* File localfile = null;
         try {
             localfile = File.createTempFile("images", "jpg");
 
@@ -77,7 +78,16 @@ public class GuideAdapterChat extends RecyclerView.Adapter<GuideAdapterChat.View
                 holder.mprofileimg.setImageBitmap(bitmap);
             }
         });
+*/
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext , MessageActivityChat.class);
+                intent.putExtra("userid" , guide.getId());
+                mcontext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -85,7 +95,6 @@ public class GuideAdapterChat extends RecyclerView.Adapter<GuideAdapterChat.View
     public int getItemCount() {
         return mguide.size();
     }
-
 
 
 }

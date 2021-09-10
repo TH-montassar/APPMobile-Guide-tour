@@ -39,9 +39,8 @@ import java.util.ArrayList;
 public class MessagesFragment extends Fragment {
     ImageView imagesuser;
     TextView nameuser;
-
-
     FirebaseUser currentUserGuide, currentUsertoursit;
+    DatabaseReference  myRefg,myReft;
 
 
     /* */
@@ -57,7 +56,7 @@ public class MessagesFragment extends Fragment {
         currentUserGuide = mAuth.getCurrentUser();
         currentUsertoursit = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("guide").child(currentUserGuide.getUid());
+        myRefg = database.getReference("guide").child(currentUserGuide.getUid());
 
 
         Toolbar toolbar = root.findViewById(R.id.toolbarr);
@@ -66,7 +65,7 @@ public class MessagesFragment extends Fragment {
         imagesuser = root.findViewById(R.id.profileimg);
         nameuser = root.findViewById(R.id.username);
         // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRefg.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -75,18 +74,22 @@ public class MessagesFragment extends Fragment {
 
                 if (guide != null){
                     nameuser.setText(guide.getName() + " " + guide.getFullname());
+                    imagesuser.setImageResource(R.drawable.bbb);
+
                 }else {
 
-                    DatabaseReference myReff = database.getReference("tourist").child(currentUsertoursit.getUid());
+                     myReft = database.getReference("tourist").child(currentUsertoursit.getUid());
 
                     // Read from the database
-                    myReff.addValueEventListener(new ValueEventListener() {
+                    myReft.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
                             Tourist tourist = dataSnapshot.getValue(Tourist.class);
                             nameuser.setText(tourist.getName());
+                            imagesuser.setImageResource(R.drawable.bbb);
+
 
 
                         }

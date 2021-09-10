@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATourGuide">
         <activity
+            android:name=".MessageActivityChat"
+            android:exported="true" />
+        <activity
             android:name=".registertourist"
             android:exported="true" />
         <activity
@@ -70,7 +73,7 @@
             android:name=".firebase.MessagesS"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>
