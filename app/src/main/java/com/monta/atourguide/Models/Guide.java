@@ -11,16 +11,24 @@ public class Guide {
     public Guide() {
     }
 
-    public Guide(String id,String name, String fullname, String email, String city, Integer number) {
+    public Guide(String imgGd) {
+        this.imgGd = imgGd;
+    }
+
+    public Guide(String id, String name, String fullname, String email, String city, Integer number, String imgGd,Float price, String description) {
         this.id = id;
         this.name = name;
         this.fullname = fullname;
         this.email = email;
         this.city = city;
         this.number = number;
+        this.imgGd= imgGd;
+        this.price= price;
+        this.description= description;
 
 
     }
+
 
 
     public Guide(String name, String fullname, String email, String city, String description, String descriptionDetails, String date, String sex, Integer age, Integer number, Float price) {
@@ -160,4 +168,5 @@ public class Guide {
     public void setId(String id) {
         this.id = id;
     }
+
 }

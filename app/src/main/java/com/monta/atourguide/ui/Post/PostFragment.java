@@ -29,6 +29,7 @@ import com.monta.atourguide.R;
 import com.monta.atourguide.databinding.FragmentPostBinding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PostFragment extends Fragment {
@@ -78,6 +79,7 @@ public class PostFragment extends Fragment {
                     postList.add(post);
 
                 }
+                Collections.reverse(postList);
                 profileGAdapter = new ProfileGAdapter(getContext(), postList);
                 recyclerView.setAdapter(profileGAdapter);
 

@@ -18,7 +18,7 @@
             android:layout_marginStart="85dp"
             android:layout_marginEnd="105dp"
             android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView8"
+            app:layout_constraintBottom_toTopOf="@+id/addilmg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             app:srcCompat="@drawable/logocercel" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/addilmg"
             android:layout_width="133dp"
             android:layout_height="139dp"
             android:layout_marginTop="80dp"
@@ -46,7 +46,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintTop_toBottomOf="@+id/addilmg" />
 
         <EditText
             android:id="@+id/editTextemail"
@@ -141,12 +141,17 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextgiudePassword" />
+
             <ProgressBar
                 android:id="@+id/progbar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:visibility="invisible"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"/>
+                android:indeterminate="true"
+                android:indeterminateTint="@color/sky_blue"
+                android:indeterminateTintMode="src_atop"
+                />
         </FrameLayout>
 
         <TextView

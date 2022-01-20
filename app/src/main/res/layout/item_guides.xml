@@ -114,7 +114,7 @@
 
     </RelativeLayout>
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageduide"
 
         android:layout_width="59dp"

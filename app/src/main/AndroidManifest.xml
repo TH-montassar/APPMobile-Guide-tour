@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ATourGuide">
         <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".MessageActivityChat"
             android:exported="true" />
         <activity
@@ -23,10 +27,9 @@
             android:exported="true" />
         <activity
             android:name=".loginTourist"
-            android:exported="true" />
-        <activity
-            android:name=".detaiilsporofileG"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".detaiilsporofileG" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -66,16 +69,10 @@
         <activity android:name=".verifactionMail" />
         <activity android:name=".forgetpassgiude" />
         <activity android:name=".registergiude" />
-        <activity android:name=".LoginGuide" />
+        <activity
+            android:name=".LoginGuide"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
-
-        <service
-            android:name=".firebase.MessagesS"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

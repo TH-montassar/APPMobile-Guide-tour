@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +69,9 @@ public class loginTourist extends AppCompatActivity {
         btnregisterT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressBar simpleProgressBar =findViewById(R.id.progbar);
+                simpleProgressBar.setVisibility(View.VISIBLE);
+
                 editTextemailT = findViewById(R.id.editTextemailT);
                 editTextTOURPassword = findViewById(R.id.editTextTOURPassword);
 
@@ -85,6 +89,8 @@ public class loginTourist extends AppCompatActivity {
 
 
                 } else {
+                    simpleProgressBar.setVisibility(View.VISIBLE);
+                    btnregisterT.setVisibility(View.INVISIBLE);
 
 
                     FirebaseAuth mAuth;
@@ -103,31 +109,20 @@ public class loginTourist extends AppCompatActivity {
 
 
                                         FirebaseDatabase databaseR = FirebaseDatabase.getInstance();
-                                        DatabaseReference myRef = databaseR.getReference("tourist").child(  userTourist.getUid());
+                                        DatabaseReference myRef = databaseR.getReference("tourist").child(userTourist.getUid());
 
                                         // Read from the database
                                         myRef.addValueEventListener(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
+                                                simpleProgressBar.setVisibility(View.INVISIBLE);
+                                                btnregisterT.setVisibility(View.VISIBLE);
 
                                                 Tourist tourist= dataSnapshot.getValue(Tourist.class);
                                                 Log.d(TAG, "Value is: " +  tourist);
 
 
-                                                // Toast.makeText(LoginGuide.this, "nfull"+ guide.getFullname(), Toast.LENGTH_SHORT).show();
 
-                                                //  Toast.makeText(LoginGuide.this, "name:"+ guide.getCity(), Toast.LENGTH_SHORT).show();
-
-                                                FirebaseFirestore database = FirebaseFirestore.getInstance();
-                                                HashMap<String, Object> data = new HashMap<>();
-                                                data.put("nom et prenom",tourist.getName());
-
-                                                database.collection("usersGuide").add(data).addOnSuccessListener(documentReference -> {
-                                                    Toast.makeText(loginTourist.this, "information insérée avec succès", Toast.LENGTH_SHORT).show();
-
-                                                }).addOnFailureListener(exception -> {
-                                                    Toast.makeText(loginTourist.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-                                                });
 
                                             }
 

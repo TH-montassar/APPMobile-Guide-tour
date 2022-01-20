@@ -67,5 +67,7 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="the_price_of_your_service">The price of your service</string>
+    <string name="descriptionn">description</string>
 
 </resources>

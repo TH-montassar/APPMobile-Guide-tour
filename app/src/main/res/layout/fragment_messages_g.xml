@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".ui.Messages.MessagesFragment">
 
+    tools:context=".ui.Messages.MessagesGFragment">
+
+    <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Toolbar
-            android:id="@+id/toolbarr"
+            android:id="@+id/toolbarMG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/sky_blue"
-           android:popupTheme="@style/Theme.ATourGuide.PopupOverlay"
+            android:popupTheme="@style/Theme.ATourGuide.PopupOverlay">
 
-            >
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/profileimg"
-                android:src="@drawable/loding"
-                />
+                android:id="@+id/profile_imgG"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/loding" />
+
             <TextView
+                android:id="@+id/usernameG"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/username"
                 android:layout_marginLeft="25dp"
                 android:text="username"
                 android:textColor="#fff"
@@ -45,10 +45,9 @@
             android:layout_height="wrap_content"
             android:background="@color/sky_blue"
             app:tabIndicatorColor="#FFFFFF"
-            app:tabSelectedTextColor="@color/white"
+            app:tabSelectedTextColor="@color/white" />
+           <!-- app:tabTextColor="@color/white"-->
 
-            tools:ignore="SpeakableTextPresentCheck" />
-       <!-- app:tabTextColor="@color/white"-->
     </com.google.android.material.appbar.AppBarLayout>
 
 

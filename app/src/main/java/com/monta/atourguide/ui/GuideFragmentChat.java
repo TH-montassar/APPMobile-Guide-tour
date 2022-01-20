@@ -57,7 +57,12 @@ public class GuideFragmentChat extends Fragment {
                 for (DataSnapshot parentSnapshot : snapshot.getChildren()) {
                     Guide guide = parentSnapshot.getValue(Guide.class);
 
-                    mGuide.add(guide);
+
+                        mGuide.add(guide);
+
+
+
+
                 }
                 guideAdapterChat = new GuideAdapterChat(getContext(), mGuide);
                 recyclerView.setAdapter(guideAdapterChat);

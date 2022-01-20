@@ -30,6 +30,8 @@ public class SplashScreenFirstActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,7 @@ public class SplashScreenFirstActivity extends AppCompatActivity {
         DatabaseReference myReff = database.getReference("tourist").child(currentUserTourist.getUid());
 
 
-       *//* if (currentUserTourist!= null) {
+       if (currentUserTourist!= null) {
             Intent intent = new Intent(SplashScreenFirstActivity.this, HomeTouristActivity.class);
             startActivity(intent);
 

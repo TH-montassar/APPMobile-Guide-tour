@@ -29,7 +29,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class GuideAdapterChat extends RecyclerView.Adapter<GuideAdapterChat.ViewHolder> {
     private Context mcontext;
     private List<Guide> mguide;
-    private StorageReference mstorageRef;
+    StorageReference mstorageRef;
 
     public GuideAdapterChat(Context mcontext, List<Guide> mguide) {
         this.mcontext = mcontext;
@@ -62,7 +62,7 @@ public class GuideAdapterChat extends RecyclerView.Adapter<GuideAdapterChat.View
         Guide guide = mguide.get(position);
         holder.mUserName.setText(guide.getName() + " " + guide.getFullname());
 
-       /* File localfile = null;
+        File localfile = null;
         try {
             localfile = File.createTempFile("images", "jpg");
 
@@ -78,13 +78,14 @@ public class GuideAdapterChat extends RecyclerView.Adapter<GuideAdapterChat.View
                 holder.mprofileimg.setImageBitmap(bitmap);
             }
         });
-*/
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mcontext , MessageActivityChat.class);
-                intent.putExtra("userid" , guide.getId());
+                Intent intent = new Intent(mcontext, MessageActivityChat.class);
+                intent.putExtra("userid", guide.getId());
+                intent.putExtra("imagereciver",guide.getImgGd());
                 mcontext.startActivity(intent);
             }
         });

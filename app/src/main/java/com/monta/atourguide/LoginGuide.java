@@ -2,12 +2,10 @@ package com.monta.atourguide;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -24,6 +25,8 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
@@ -34,14 +37,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.monta.atourguide.Adapters.ProfileGAdapter;
 import com.monta.atourguide.Models.Guide;
-import com.monta.atourguide.Models.Post;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 
 public class LoginGuide extends AppCompatActivity {
@@ -90,9 +89,8 @@ public class LoginGuide extends AppCompatActivity {
         btnlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProgressBar simpleProgressBar =findViewById(R.id.progbar);
+                ProgressBar simpleProgressBar = findViewById(R.id.progbar);
                 simpleProgressBar.setVisibility(View.VISIBLE);
-
 
 
                 // Bundle bundle = new Bundle();
@@ -116,6 +114,9 @@ public class LoginGuide extends AppCompatActivity {
 
 
                 } else {
+                    simpleProgressBar.setVisibility(View.VISIBLE);
+                    btnlog.setVisibility(View.INVISIBLE);
+
                 /*if (email.isEmpty() || (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) ) {
                     editTextmailg.setError("il faut  remplire le email\n" +
                             "le type email (@...com)");
@@ -150,60 +151,53 @@ public class LoginGuide extends AppCompatActivity {
                                         Log.d(TAG, "signInWithEmail:success");
 
 
-                                        FirebaseUser userGuide = mAuth.getCurrentUser();
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        String admin = user.getEmail();
 
-                                        FirebaseDatabase databaseR = FirebaseDatabase.getInstance();
-                                        DatabaseReference myRef = databaseR.getReference("guide").child( userGuide.getUid());
+                                        if (admin.equals("admin@gmail.com")) {
+                                            updateUI(user);
 
-                                        // Read from the database
-                                        myRef.addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                          sendToAdmin();
+                                        } else{
+                                            FirebaseDatabase databaseR = FirebaseDatabase.getInstance();
+                                            DatabaseReference myRef = databaseR.getReference("guide").child(user.getUid());
 
-                                                Guide guide= dataSnapshot.getValue(Guide.class);
-                                                Log.d(TAG, "Value is: " +  guide);
-
-
-                                               // Toast.makeText(LoginGuide.this, "nfull"+ guide.getFullname(), Toast.LENGTH_SHORT).show();
-
-                                              //  Toast.makeText(LoginGuide.this, "name:"+ guide.getCity(), Toast.LENGTH_SHORT).show();
-
-                                                /*FirebaseFirestore database = FirebaseFirestore.getInstance();
-                                                HashMap<String, Object> data = new HashMap<>();
-                                                data.put("prenom",guide.getName());
-                                                data.put("nom", guide.getFullname());
-                                                database.collection("usersGuide").add(data).addOnSuccessListener(documentReference -> {
-                                                    Toast.makeText(LoginGuide.this, "information insérée avec succès", Toast.LENGTH_SHORT).show();
-
-                                                }).addOnFailureListener(exception -> {
-                                                    Toast.makeText(LoginGuide.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-                                                });*/
-
-                                            }
-
-                                            @Override
-                                            public void onCancelled(DatabaseError error) {
-                                                // Failed to read value
-                                                Log.w(TAG, "Failed to read value.", error.toException());
-                                            }
-                                        });
+                                            // Read from the database
+                                            myRef.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
 
 
+                                                    Guide guide = dataSnapshot.getValue(Guide.class);
+                                                    Log.d(TAG, "Value is: " + guide);
 
 
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError error) {
+
+                                                    Log.w(TAG, "Failed to read value.", error.toException());
+                                                }
+                                            });
 
 
-
-                                        Toast.makeText(LoginGuide.this, "logged in successfully", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(LoginGuide.this, HomeGuide.class);
+                                            Toast.makeText(LoginGuide.this, "logged in successfully", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(LoginGuide.this, HomeGuide.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         /*intent.putExtra("namegi", namegi);
                                         intent.putExtra("email", email);
 
 
                                         intent.putExtra("password",password);*/
-                                        startActivity(intent);
+                                            startActivity(intent);
+
+                                        }
+
 
                                     } else {
+                                        simpleProgressBar.setVisibility(View.INVISIBLE);
+                                        btnlog.setVisibility(View.VISIBLE);
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "signInWithEmail:failure", task.getException());
                                         Toast.makeText(LoginGuide.this, "Verify your email or password!", Toast.LENGTH_SHORT).show();
@@ -312,11 +306,49 @@ public class LoginGuide extends AppCompatActivity {
         //tpassword.setText(password);
 
     }
+    private void updateUI(FirebaseUser user) {
 
+        if (user != null) {
+            final String personName = user.getDisplayName();
+            final String Email = user.getEmail();
+            final String admiId = user.getUid();
+            final Uri image = user.getPhotoUrl();
+            // Toast.makeText(this, "Name of the user :" + personName + " user id is : " + personId + "Email id" +  Email, Toast.LENGTH_SHORT).show();
+            Map<String, String> userData = new HashMap<>();
+            userData.put("userName", personName);
+            userData.put("UserEmail", Email);
+            userData.put("idAdmin", admiId);
 
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+            ref.child("admin").child(admiId)
+                    .setValue(userData)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.i(TAG, "onComplete: ");
 
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.i(TAG, "onFailure: "+e.toString());
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.i(TAG, "onSuccess: ");
+                }
+            });
 
+        }
+    }
 
+    private void sendToAdmin(){
+        Intent adminIntent = new Intent(LoginGuide.this,AdminActivity.class);
+        startActivity(adminIntent);
+        finish();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);

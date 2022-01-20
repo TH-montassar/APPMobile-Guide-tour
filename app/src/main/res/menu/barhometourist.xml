@@ -7,13 +7,13 @@
         android:icon="@drawable/entre"
         android:orderInCategory="100"
         android:title="@string/action_signin"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_logOutt"
         android:icon="@drawable/ic_logout"
         android:orderInCategory="100"
         android:title="@string/action_logOut"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_settings"

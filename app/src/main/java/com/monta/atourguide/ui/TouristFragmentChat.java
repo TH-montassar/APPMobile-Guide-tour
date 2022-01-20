@@ -44,6 +44,7 @@ public class TouristFragmentChat extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mtourist = new ArrayList<>();
+
         readmtourist();
 
         return view;
@@ -57,8 +58,13 @@ public class TouristFragmentChat extends Fragment {
                 mtourist.clear();
                 for (DataSnapshot touristSnapshot : snapshot.getChildren()) {
                     Tourist tourist = touristSnapshot.getValue(Tourist.class);
+                    assert tourist != null;
+                    assert firebaseUser != null;
+                    if(!tourist.getId().equals(firebaseUser.getUid())){
+                        mtourist.add(tourist);
+                    }
 
-                    mtourist.add(tourist);
+
                 }
                 touristeAdapterChat = new  TouristeAdapterChat(getContext(), mtourist);
                 recyclerView.setAdapter(touristeAdapterChat);

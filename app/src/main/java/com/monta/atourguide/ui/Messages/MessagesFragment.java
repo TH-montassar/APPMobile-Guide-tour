@@ -2,6 +2,8 @@ package com.monta.atourguide.ui.Messages;
 
 import static android.content.ContentValues.TAG;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,12 +14,10 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,15 +26,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.monta.atourguide.Adapters.ViewPagerAdapter;
 import com.monta.atourguide.Models.Guide;
 import com.monta.atourguide.Models.Tourist;
 import com.monta.atourguide.R;
 import com.monta.atourguide.databinding.FragmentMessagesBinding;
-import com.monta.atourguide.ui.TouristFragmentChat;
 import com.monta.atourguide.ui.chatFragment;
 import com.monta.atourguide.ui.GuideFragmentChat;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 
 public class MessagesFragment extends Fragment {
     ImageView imagesuser;
@@ -42,7 +46,7 @@ public class MessagesFragment extends Fragment {
     FirebaseUser currentUserGuide, currentUsertoursit;
     DatabaseReference  myRefg,myReft;
 
-
+    StorageReference mstorageRef = FirebaseStorage.getInstance().getReference();
     /* */
     private FragmentMessagesBinding binding;
 
@@ -88,7 +92,23 @@ public class MessagesFragment extends Fragment {
                             // whenever data at this location is updated.
                             Tourist tourist = dataSnapshot.getValue(Tourist.class);
                             nameuser.setText(tourist.getName());
-                            imagesuser.setImageResource(R.drawable.bbb);
+                            File localfile = null;
+                            try {
+                                localfile = File.createTempFile("images", "jpg");
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            final File finallocalfile = localfile;
+
+                            StorageReference reversRef = mstorageRef.child(tourist.getImage());
+                            reversRef.getFile(finallocalfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                    Bitmap bitmap = BitmapFactory.decodeFile(finallocalfile.getAbsolutePath());
+                                    imagesuser.setImageBitmap(bitmap);
+                                }
+                            });
 
 
 
@@ -130,7 +150,7 @@ public class MessagesFragment extends Fragment {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         viewPagerAdapter.addFragment(new chatFragment(), "chats");
         viewPagerAdapter.addFragment(new GuideFragmentChat(), "Guide");
-        viewPagerAdapter.addFragment(new TouristFragmentChat(), "users");
+       // viewPagerAdapter.addFragment(new TouristFragmentChat(), "users");
 
         viewpage.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewpage);
@@ -139,38 +159,6 @@ public class MessagesFragment extends Fragment {
         return root;
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private ArrayList<Fragment> fragments;
-        private ArrayList<String> titles;
-
-        ViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-            this.fragments = new ArrayList<>();
-            this.titles = new ArrayList<>();
-        }
-
-        @NonNull
-        @Override
-        public Fragment getItem(int position) {
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            fragments.add(fragment);
-            titles.add(title);
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titles.get(position);
-        }
-    }
 
     @Override
     public void onDestroyView() {

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,11 +30,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.monta.atourguide.Adapters.MessageschattingAdapter;
 import com.monta.atourguide.Models.Guide;
 import com.monta.atourguide.Models.Messageschats;
 import com.monta.atourguide.Models.Tourist;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +57,8 @@ public class MessageActivityChat extends AppCompatActivity {
     Intent intent;
     private Toolbar toolbar;
     String id;
+
+    StorageReference mstorageRef = FirebaseStorage.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +121,23 @@ public class MessageActivityChat extends AppCompatActivity {
                       Guide guide = snapshot.getValue(Guide.class);
 
                           username.setText(guide.getName() + " " + guide.getFullname());
-                          // if(guide.getImgGd().equals("default")){
-                          profileimg.setImageResource(R.mipmap.ic_launcher);
-                          //  }else{
-                          //   Glide.with(MessageActivityChat.this).load(guide.getImgGd()).into(profileimg);
-                          //   }
+                      File localfile = null;
+                      try {
+                          localfile = File.createTempFile("images", "jpg");
+
+                      } catch (IOException e) {
+                          e.printStackTrace();
+                      }
+                      final File finallocalfile = localfile;
+                      StorageReference reversRef = mstorageRef.child(guide.getImgGd());
+                      reversRef.getFile(finallocalfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                          @Override
+                          public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                              Bitmap bitmap = BitmapFactory.decodeFile(finallocalfile.getAbsolutePath());
+                              profileimg.setImageBitmap(bitmap);
+                          }
+                      });
+
 
 
 
@@ -155,7 +177,22 @@ public class MessageActivityChat extends AppCompatActivity {
                       // whenever data at this location is updated.
                       Tourist tourist = dataSnapshot.getValue(Tourist.class);
                       username.setText(tourist.getName());
-                      profileimg.setImageResource(R.drawable.bbb);
+                      File localfile = null;
+                      try {
+                          localfile = File.createTempFile("images", "jpg");
+
+                      } catch (IOException e) {
+                          e.printStackTrace();
+                      }
+                      final File finallocalfile = localfile;
+                      StorageReference reversRef = mstorageRef.child(tourist.getImage());
+                      reversRef.getFile(finallocalfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                          @Override
+                          public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                              Bitmap bitmap = BitmapFactory.decodeFile(finallocalfile.getAbsolutePath());
+                              profileimg.setImageBitmap(bitmap);
+                          }
+                      });
 
                       readMsg(fUserguide.getUid(),usertid,tourist.getImage());
 

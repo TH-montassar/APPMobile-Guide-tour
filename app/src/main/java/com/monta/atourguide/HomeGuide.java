@@ -2,17 +2,17 @@ package com.monta.atourguide;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,20 +20,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,18 +38,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.monta.atourguide.Models.Guide;
 import com.monta.atourguide.Models.Post;
 import com.monta.atourguide.databinding.ActivityHomepageBinding;
-import com.monta.atourguide.ui.Post.PostFragment;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 public class HomeGuide extends AppCompatActivity {
 
@@ -68,6 +64,7 @@ public class HomeGuide extends AppCompatActivity {
 
     // Create a Cloud Storage reference from the app
     StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,10 +113,12 @@ public class HomeGuide extends AppCompatActivity {
         profile_guide_nav_header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
+                Toast.makeText(HomeGuide.this, "you need to fixe problm intent to profile fragmentt", Toast.LENGTH_SHORT).show();
+              /* Intent intent = new Intent(, ProfileFragment.class);
+                startActivity(intent)*/
+                ;
+
+
             }
         });
 
@@ -137,6 +136,22 @@ public class HomeGuide extends AppCompatActivity {
                 TextView userUser = headerView.findViewById(R.id.nameheader);
                 userEmail.setText(guide.getEmail());
                 userUser.setText(guide.getName());
+                File localfile = null;
+                try {
+                    localfile = File.createTempFile("images", "jpg");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                final File finallocalfile = localfile;
+                StorageReference reversRef = storageRef.child(guide.getImgGd());
+                reversRef.getFile(finallocalfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        Bitmap bitmap = BitmapFactory.decodeFile(finallocalfile.getAbsolutePath());
+                        profile_guide_nav_header.setImageBitmap(bitmap);
+                    }
+                });
 
 
                 //   Toast.makeText(LoginGuide.this, value, Toast.LENGTH_SHORT).show();
@@ -208,26 +223,27 @@ public class HomeGuide extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("post");
 
-                 String Autoid=myRef.push().getKey();
+                String Autoid = myRef.push().getKey();
+                String id=currentUserGuide.getUid();
 
 
                 //Toast.makeText(getApplicationContext(), "Authentication success.", Toast.LENGTH_SHORT).show();
-                StorageReference imageposte= storageRef.child("guidemedia/postimage/"+Autoid+".jpg");
+                StorageReference imageposte = storageRef.child("guidemedia/postimage/" + Autoid + ".jpg");
                 imageposte.putFile(imageUri_post).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        String pathmg=taskSnapshot.getMetadata().getPath();
+                        String pathmg = taskSnapshot.getMetadata().getPath();
 
                         String title = titleId.getText().toString();
 
                         String desc = descId.getText().toString();
-                        Post post = new Post(title,desc,pathmg);
+                        Post post = new Post(title, desc, pathmg,id,Autoid);
 
                         myRef.child(Autoid).setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                              dialog.dismiss();
-                               // Intent intent =new Intent(HomeGuide.this, PostFragment.class);
+                                dialog.dismiss();
+                                // Intent intent =new Intent(HomeGuide.this, PostFragment.class);
                                 //startActivity(intent);
                             }
                         });
@@ -235,11 +251,6 @@ public class HomeGuide extends AppCompatActivity {
 
                     }
                 });
-
-
-
-
-
 
 
             }
@@ -288,28 +299,9 @@ public class HomeGuide extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        FirebaseAuth mAuth;
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (requestCode == SELECT_PICTURE) {
+        if (requestCode == PICK_IMAGE) {
             if (data != null) {
-                imageUri_nav=data.getData();
-
-
-
-                StorageReference imageprofile= storageRef.child("guidemedia/profile_img/"+currentUser.getUid()+".jpg");
-                imageprofile.putFile(imageUri_nav).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        profile_guide_nav_header.setImageURI(imageUri_nav);
-                    }
-                });
-
-
-            }
-        }  if (requestCode == PICK_IMAGE) {
-            if (data != null) {
-                imageUri_post=data.getData();
+                imageUri_post = data.getData();
                 insert_imgId.setImageURI(data.getData());
 
 

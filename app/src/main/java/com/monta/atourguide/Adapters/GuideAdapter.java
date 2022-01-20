@@ -60,11 +60,14 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideViewHolder> {
         Guide guide=GuideListe.get(position);
         holder.name_gd.setText(guide.getName());
         holder.desc_gd.setText(guide.getDescription());
+
+
         holder.gd_price.setText(guide.getPrice().toString());
+
         holder.gd_city.setText(guide.getCity());
 
 
-        /*File localfile = null;
+        File localfile = null;
         try {
             localfile = File.createTempFile("images", "jpg");
 
@@ -79,7 +82,7 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideViewHolder> {
                 Bitmap bitmap = BitmapFactory.decodeFile(finallocalfile.getAbsolutePath());
                 holder.imageduide.setImageBitmap(bitmap);
             }
-        });*/
+        });
 
 
 
@@ -106,12 +109,13 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideViewHolder> {
                     intent.putExtra("fullnameGuide",guide.getFullname());
                     intent.putExtra("emailGuide",guide.getEmail());
                     intent.putExtra("cityGuide",guide.getCity());
-                    intent.putExtra("descriptionDetailsGuide",guide.getDescriptionDetails());
+                    intent.putExtra("descriptionDetailsGuide",guide.getDescription());
                     intent.putExtra("sexGuide",guide.getSex());
                     intent.putExtra("ageGuide",guide.getAge());
                     intent.putExtra("numberGuide",guide.getNumber());
                     intent.putExtra("imageGuide",guide.getImgGd());
                     intent.putExtra("priceGuide",guide.getPrice());
+                    intent.putExtra("userid", guide.getId());
 
                     mContext.startActivity(intent);
 

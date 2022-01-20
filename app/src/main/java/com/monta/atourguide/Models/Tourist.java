@@ -1,19 +1,20 @@
 package com.monta.atourguide.Models;
 
 public class Tourist {
-    private String name, email, number,id,image;
+    private String name, email,id,image;
+    private int number;
 
 
     public Tourist() {
     }
 
-    public Tourist(String name, String email, String number) {
+    public Tourist(String name, String email, int number) {
         this.name = name;
         this.email = email;
         this.number = number;
     }
 
-    public Tourist(String name, String email, String number, String id) {
+    public Tourist(String name, String email, int number, String id) {
         this.name = name;
         this.email = email;
         this.number = number;
@@ -21,7 +22,7 @@ public class Tourist {
 
     }
 
-    public Tourist(String name, String email, String number, String id, String image) {
+    public Tourist(String name, String email, int number, String id, String image) {
         this.name = name;
         this.email = email;
         this.number = number;
@@ -46,15 +47,13 @@ public class Tourist {
     }
 
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
-
-
 
     public String getId() {
         return id;

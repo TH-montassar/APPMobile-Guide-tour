@@ -12,22 +12,37 @@
         android:layout_height="match_parent"
         android:background="#f5f5f5">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/sky_blue"
+            android:popupTheme="@style/Theme.ATourGuide.PopupOverlay"
+
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="719dp"
-            android:layout_height="394dp"
-            android:src="@drawable/group13"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.549"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="716dp"
+            android:layout_height="393dp"
 
-        <ImageView
-            android:id="@+id/imageProfile"
+            android:layout_marginBottom="166dp"
+            android:src="@drawable/group13"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.544"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarr" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageProfileG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="76dp"
             android:src="@drawable/bbb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -45,7 +60,7 @@
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/imageProfileG" />
 
         <TextView
             android:id="@+id/textFullName"
@@ -59,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.098"
             app:layout_constraintStart_toEndOf="@+id/textName"
-            app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/imageProfileG" />
 
         <TextView
             android:id="@+id/textEmail"
@@ -102,6 +117,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/missagechat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

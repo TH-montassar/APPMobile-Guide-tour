@@ -13,7 +13,7 @@
     android:layout_height="match_parent">
 
 
-  <EditText
+    <EditText
       android:id="@+id/editTextfullname"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -57,51 +57,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/welcomegg" />
 
-  <EditText
-      android:id="@+id/editTextgphone"
-      android:layout_width="0dp"
-      android:layout_height="58dp"
-      android:layout_marginStart="32dp"
-      android:layout_marginTop="40dp"
-      android:layout_marginEnd="32dp"
-      android:background="@drawable/round_border"
-      android:backgroundTint="@color/white"
-      android:backgroundTintMode="src_over"
-      android:drawableStart="@drawable/ic_baseline_local_phone_24"
-      android:drawablePadding="16dp"
-      android:ems="10"
-      android:hint="phone number"
-      android:inputType="number|text|phone"
-      android:padding="16dp"
-      android:textColorHint="@color/black"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.573"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/editTextgiPwdConfirme" />
-
-  <EditText
-      android:id="@+id/editTextgicity"
-      android:layout_width="0dp"
-      android:layout_height="58dp"
-      android:layout_marginStart="32dp"
-      android:layout_marginTop="52dp"
-      android:layout_marginEnd="32dp"
-      android:background="@drawable/round_border"
-      android:backgroundTint="@color/white"
-      android:backgroundTintMode="src_over"
-      android:drawableStart="@drawable/ic_baseline_location_city_24"
-      android:drawablePadding="16dp"
-      android:ems="10"
-      android:hint="city"
-      android:inputType="text"
-      android:padding="16dp"
-      android:textColorHint="@color/black"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/editTextgphone" />
-
-  <EditText
+    <EditText
       android:id="@+id/editTextgiPwdConfirme"
       android:layout_width="0dp"
       android:layout_height="58dp"
@@ -128,21 +84,22 @@
       android:layout_width="172dp"
       android:layout_height="129dp"
       android:layout_marginTop="24dp"
-      app:layout_constraintEnd_toStartOf="@+id/imageView8"
+      app:layout_constraintEnd_toStartOf="@+id/addilmg"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/logocercel" />
 
-  <ImageView
-      android:id="@+id/imageView8"
-      android:layout_width="123dp"
-      android:layout_height="116dp"
+  <de.hdodenhof.circleimageview.CircleImageView
+      android:id="@+id/addilmg"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
       android:layout_marginTop="24dp"
       android:layout_marginEnd="36dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/ic_baseline_perm_identity_24" />
+     android:src="@drawable/addimg"
+      />
 
   <TextView
       android:id="@+id/welcomegg"
@@ -154,7 +111,7 @@
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+      app:layout_constraintTop_toBottomOf="@+id/addilmg" />
 
   <EditText
       android:id="@+id/editTextemail"
@@ -197,25 +154,127 @@
       app:layout_constraintStart_toStartOf="@+id/editTextemail"
       app:layout_constraintTop_toBottomOf="@+id/editTextemail" />
 
-  <Button
-      android:id="@+id/btnregistergiude"
-      android:layout_width="341dp"
-      android:layout_height="62dp"
-      android:layout_marginStart="32dp"
-      android:layout_marginTop="184dp"
-      android:layout_marginEnd="32dp"
-      android:backgroundTint="@color/sky_blue"
-      android:text="register"
-      android:textSize="20sp"
-      android:textStyle="bold|italic"
-      app:cornerRadius="100dp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/editTextgphone" />
+    <EditText
+        android:id="@+id/editTextgphone"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_border"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="src_over"
+        android:drawableStart="@drawable/ic_baseline_local_phone_24"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="phone number"
+        android:inputType="number|text|phone"
+        android:padding="16dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextgiPwdConfirme" />
+
+    <EditText
+        android:id="@+id/editTextgicity"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_border"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="src_over"
+        android:drawableStart="@drawable/ic_baseline_location_city_24"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="city"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextgphone" />
+
+    <ProgressBar
+        android:id="@+id/progbar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/sky_blue"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnregistergiude"
+        app:layout_constraintStart_toStartOf="@+id/btnregistergiude"
+        app:layout_constraintTop_toTopOf="@+id/btnregistergiude" />
+
+    <EditText
+        android:id="@+id/PRIX"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_border"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="src_over"
+        android:drawableStart="@drawable/aa"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="@string/the_price_of_your_service"
+        android:inputType="number"
+        android:padding="16dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextgicity" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="347dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_border"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="src_over"
+        android:drawableStart="@drawable/about"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="@string/descriptionn"
+        android:inputType="text|textMultiLine"
+        android:padding="16dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PRIX" />
+
+    <Button
+        android:id="@+id/btnregistergiude"
+        android:layout_width="341dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/sky_blue"
+        android:text="register"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </ScrollView>

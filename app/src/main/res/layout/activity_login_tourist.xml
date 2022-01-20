@@ -121,6 +121,20 @@ android:background="@drawable/backappx">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTOURPassword" />
 
+        <ProgressBar
+            android:id="@+id/progbar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/sky_blue"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/btnregisterT"
+            app:layout_constraintEnd_toEndOf="@+id/btnregisterT"
+            app:layout_constraintStart_toStartOf="@+id/btnregisterT"
+            app:layout_constraintTop_toTopOf="@+id/btnregisterT" />
+
         <TextView
             android:id="@+id/registergiudlog"
             android:layout_width="wrap_content"
